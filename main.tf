@@ -28,10 +28,12 @@ variable "db_password" {}
 
 
 module "db" {
-  source     = "terraform-aws-modules/rds/aws"
-  version    = "6.4.0"
-  family     = "mysql8.0"
-  identifier = "mydemo-mysql-db"
+  source                    = "terraform-aws-modules/rds/aws"
+  version                   = "6.4.0"
+  family                    = "mysql8.0"
+  identifier                = "mydemo-mysql-db"
+  create_db_option_group    = false
+  create_db_parameter_group = false
 
   engine               = "mysql"
   engine_version       = "8.0.23"
@@ -46,9 +48,6 @@ module "db" {
 
   # Using the default VPC and subnets
   vpc_security_group_ids = [data.aws_security_group.default.id]
-  subnet_ids             = tolist(data.aws_subnets.default.ids)
-  create_db_subnet_group = true
-  create_db_option_group = true
   publicly_accessible    = true
 
   # Backup, maintenance, and other settings
