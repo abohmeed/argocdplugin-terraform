@@ -30,7 +30,7 @@ variable "db_password" {}
 module "db" {
   source     = "terraform-aws-modules/rds/aws"
   version    = "6.4.0"
-  family     = "mysql"
+  family     = "mysql8.0"
   identifier = "mydemo-mysql-db"
 
   engine               = "mysql"
