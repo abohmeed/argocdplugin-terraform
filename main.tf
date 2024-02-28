@@ -51,10 +51,11 @@ module "db" {
   instance_class       = "db.t3.micro"
   allocated_storage    = 20
 
-  db_name  = "argocddemo"
-  username = var.db_username
-  password = var.db_password
-  port     = "3306"
+  manage_master_user_password = false
+  db_name                     = "argocddemo"
+  username                    = var.db_username
+  password                    = var.db_password
+  port                        = "3306"
 
   # Using the default VPC and subnets
   vpc_security_group_ids = [data.aws_security_group.default.id]
