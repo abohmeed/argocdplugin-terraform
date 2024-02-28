@@ -40,6 +40,7 @@ jobs:
         env:
             TF_VAR_db_username: ${{ secrets.DATABASE_USERNAME }}
             TF_VAR_db_password: ${{ secrets.DATABASE_PASSWORD }}
+            TF_LOG: DEBUG
 
       - name: Save Terraform Output
         run: terraform output -json > terraform-output.json
