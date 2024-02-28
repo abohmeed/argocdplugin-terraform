@@ -1,3 +1,14 @@
+terraform {
+  backend "s3" {
+    bucket         = "terraform-state-ertdsaw" # choose your own bucket name
+    key            = "state/terraform.tfstate"
+    region         = "eu-west-1"
+    dynamodb_table = "my-terraform-locks"
+    encrypt        = true
+  }
+}
+
+
 provider "aws" {
   region = "eu-west-1" # Adjust this to your preferred AWS region
 }
@@ -26,7 +37,6 @@ data "aws_security_group" "default" {
 variable "db_username" {}
 variable "db_password" {}
 
-
 module "db" {
   source                    = "terraform-aws-modules/rds/aws"
   version                   = "6.4.0"
@@ -36,7 +46,7 @@ module "db" {
   create_db_parameter_group = false
 
   engine               = "mysql"
-  engine_version       = "8.0.23"
+  engine_version       = "8.0"
   major_engine_version = "8.0"
   instance_class       = "db.t3.micro"
   allocated_storage    = 20
