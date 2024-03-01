@@ -18,7 +18,6 @@ data:
         args:
         - |
           export ENDPOINT=$(jq -r '.db_instance_endpoint.value | split(":")[0]' < terraform-output.json | tr -d '\n' | base64) && \
-          kubectl patch secret mysql-creds -p '{"data":{"host":"$ENDPOINT"}}' && \
-          kubectl get secret mysql-creds -o yaml
+          kubectl -n default patch secret mysql-creds -p '{"data":{"host":"$ENDPOINT"}}'
       discover:
         fileName: "./terraform-output.json"
