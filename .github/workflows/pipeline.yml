@@ -40,7 +40,6 @@ jobs:
         env:
             TF_VAR_db_username: ${{ secrets.DATABASE_USERNAME }}
             TF_VAR_db_password: ${{ secrets.DATABASE_PASSWORD }}
-            # TF_LOG: DEBUG
 
       - name: Save Terraform Output
         run: terraform output -json > terraform-output.json
@@ -50,3 +49,11 @@ jobs:
         with:
           name: terraform-output
           path: terraform-output.json
+      
+      - name: Commit and Push Terraform Output
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add terraform-output.json
+          git commit -m "Update Terraform output"
+          git push
