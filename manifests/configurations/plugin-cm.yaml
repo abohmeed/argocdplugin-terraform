@@ -14,7 +14,7 @@ data:
       generate:
         command:
         - sh
-        - c
+        - -c
         args:
         - |
           export ENDPOINT=$(jq -r '.db_instance_endpoint.value | split(":")[0]' < terraform-output.json | tr -d '\n' | base64) && \
