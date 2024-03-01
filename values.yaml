@@ -1,9 +1,9 @@
 repoServer:
   extraContainers:
-  - name: my-plugin
+  - name: my-plugin-terraform
     command:
     - "/var/run/argocd/argocd-cmp-server"
-    image: afakharany/argocd-plugin:1.6
+    image: afakharany/argocd-plugin-terraform:1.0
     securityContext:
       runAsNonRoot: true
       runAsUser: 999
