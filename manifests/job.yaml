@@ -23,9 +23,9 @@ spec:
         env:
         - name: MYSQL_HOST
           valueFrom:
-            secretKeyRef:
-              name: mysql-creds
-              key: host
+            configMapKeyRef:
+              name: mysql-example
+              key: mysqlHost
         - name: MYSQL_USER
           valueFrom:
             secretKeyRef:
