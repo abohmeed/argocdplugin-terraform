@@ -41,7 +41,7 @@ jobs:
             TF_VAR_db_password: ${{ secrets.DATABASE_PASSWORD }}
 
       - name: Save Terraform Output
-        run: terraform output -json > terraform-output.json
+        run: terraform output -json > manifests/terraform-output.json
 
       - name: Upload Terraform Output as Artifact
         uses: actions/upload-artifact@v4
