@@ -1,6 +1,14 @@
-FROM ubuntu
-RUN apt-get update && apt-get install -y curl gettext
-WORKDIR /usr/local/bin
-RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-WORKDIR /home/argocd/cmp-server/conCfig/
-#COPY plugin.yaml ./ # let's use a ConfigMap instead
+# Use the latest Alpine image as the base
+FROM alpine:latest
+
+# Install base packages
+RUN apk add --no-cache \
+    curl \
+    jq \
+    bash \
+    coreutils
+
+# Install the latest kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+    && chmod +x ./kubectl \
+    && mv ./kubectl /usr/local/bin/kubectl

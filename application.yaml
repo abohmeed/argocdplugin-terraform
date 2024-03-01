@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-example
+  name: mysql-example
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/abohmeed/argocd-plugins-app.git'
+    repoURL: 'https://github.com/abohmeed/argocdplugin-terraform.git'
     targetRevision: HEAD
-    path: 'kustomize/overlays/development'
+    path: 'manifests'
     plugin:
       name: my-plugin-v1.6
   destination:

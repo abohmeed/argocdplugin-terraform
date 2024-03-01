@@ -12,10 +12,15 @@ repoServer:
       name: var-files
     - mountPath: /home/argocd/cmp-server/plugins
       name: plugins
-    # Starting with v2.4, do NOT mount the same tmp volume as the repo-server container. The filesystem separation helps
-    # mitigate path traversal attacks.
+    - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+      subPath: plugin.yaml
+      name: plugin-cm
     - mountPath: /tmp
       name: cmp-tmp
   volumes:
   - name: cmp-tmp
     emptyDir: {}
+  - name: plugin-cm
+    configMap:
+      name: plugin-cm
+
