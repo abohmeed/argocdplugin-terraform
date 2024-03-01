@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: mysql-client
-        image: mysql:5.7
+        image: mysql
         args: 
         - -h$(MYSQL_HOST)
         - -u$(MYSQL_USER)
