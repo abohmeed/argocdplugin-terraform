@@ -8,6 +8,8 @@ spec:
       containers:
       - name: mysql-client
         image: mysql
+        command: 
+        - mysql
         args: 
         - -h$(MYSQL_HOST)
         - -u$(MYSQL_USER)
