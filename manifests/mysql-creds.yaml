@@ -6,4 +6,3 @@ type: Opaque
 data:
   username: YWhtZWQ=  # Base64 encoded value of 'ahmed'
   password: bXlwYXNzd29yZA==  # Base64 encoded value of 'mypassword'
-  host: bXlzcWxob3N0  # Base64 encoded placeholder value for 'mysqlhost'
