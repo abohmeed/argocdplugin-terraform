@@ -22,5 +22,5 @@ repoServer:
     emptyDir: {}
   - name: plugin-cm
     configMap:
-      name: plugin-cm
+      name: terraform-plugin-config
 
