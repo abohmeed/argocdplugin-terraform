@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/abohmeed/argocdplugin-terraform.git'
     targetRevision: HEAD
-    path: 'manifests/configurations'
+    path: 'configurations'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
