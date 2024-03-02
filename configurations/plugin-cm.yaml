@@ -21,4 +21,4 @@ data:
           echo "{\"kind\": \"ConfigMap\", \"apiVersion\": \"v1\", \"metadata\": { \"name\": \"$ARGOCD_APP_NAME\", \"namespace\": \"$ARGOCD_APP_NAMESPACE\"}, \"data\": {\"mysqlHost\": \"$ENDPOINT\"}}"
 
       discover:
-        fileName: "./terraform/terraform-output.json"
+        fileName: "./terraform-output.json"
