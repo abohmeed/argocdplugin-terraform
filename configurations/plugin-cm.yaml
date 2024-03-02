@@ -18,7 +18,8 @@ data:
         args:
         - |
           export ENDPOINT=$(jq -r '.db_instance_endpoint.value | split(":")[0]' < terraform-output.json | tr -d '\n' | base64) && \
-          echo "{\"kind\": \"ConfigMap\", \"apiVersion\": \"v1\", \"metadata\": { \"name\": \"$ARGOCD_APP_NAME\", \"namespace\": \"$ARGOCD_APP_NAMESPACE\"}, \"data\": {\"mysqlHost\": \"$ENDPOINT\"}}"
+          echo "{\"kind\": \"ConfigMap\", \"apiVersion\": \"v1\", \"metadata\": { \"name\": \"$ARGOCD_APP_NAME\", \"namespace\": \"$ARGOCD_APP_NAMESPACE\"}, \"data\": {\"mysqlHost\": \"$ENDPOINT\"}}" && \
+          rm -f terraform-output.json
 
       discover:
         fileName: "./terraform-output.json"
