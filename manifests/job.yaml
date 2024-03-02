@@ -24,7 +24,7 @@ spec:
         - name: MYSQL_HOST
           valueFrom:
             configMapKeyRef:
-              name: mysql-example
+              name: terraform
               key: mysqlHost
         - name: MYSQL_USER
           valueFrom:
