@@ -17,8 +17,8 @@ data:
         - -c
         args:
         - |
-          export ENDPOINT=$(jq -r '.db_instance_endpoint.value | split(":")[0]' < terraform-output.json.ignore | tr -d '\n' | base64) && \
+          export ENDPOINT=$(jq -r '.db_instance_endpoint.value | split(":")[0]' < ./terraform/terraform-output.json | tr -d '\n' | base64) && \
           echo "{\"kind\": \"ConfigMap\", \"apiVersion\": \"v1\", \"metadata\": { \"name\": \"$ARGOCD_APP_NAME\", \"namespace\": \"$ARGOCD_APP_NAMESPACE\"}, \"data\": {\"mysqlHost\": \"$ENDPOINT\"}}"
 
       discover:
-        fileName: "./terraform-output.json.ignore"
+        fileName: "./terraform/terraform-output.json"
