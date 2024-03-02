@@ -41,18 +41,18 @@ jobs:
             TF_VAR_db_password: ${{ secrets.DATABASE_PASSWORD }}
 
       - name: Save Terraform Output
-        run: terraform output -json > manifests/terraform-output.json
+        run: terraform output -json > manifests/terraform-output.json.ignore
 
       - name: Upload Terraform Output as Artifact
         uses: actions/upload-artifact@v4
         with:
           name: terraform-output
-          path: terraform-output.json
+          path: terraform-output.json.ignore
       
       - name: Commit and Push Terraform Output
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add manifests/terraform-output.json
+          git add manifests/terraform-output.json.ignore
           git commit -m "Update Terraform output" --allow-empty
           git push
