@@ -5,8 +5,7 @@ FROM alpine:latest
 RUN apk add --no-cache \
     curl \
     jq \
-    bash \
-    coreutils
+    bash
 
 # Install the latest kubectl
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
